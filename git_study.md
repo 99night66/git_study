@@ -22,3 +22,9 @@
 - `git reset --hard HEAD^`：回到上一个版本
 - `git reset --hard COMMITID前几位就行`：回退到指定版本 
 - `git reflog`：记录你的每次命令
+
+## 管理修改
+- Git 跟踪并管理的是修改，而非文件
+- 第一次修改 -> git add -> 第二次修改 -> git commit ：第一次的修改被提交，第二次的修改不会被提交
+- `git diff HEAD --readme.txt`：可以查看工作区和版本库里面最新版的区别
+- 第一次修改 -> git add -> 第二次修改 -> git add -> git commit ：这样才是正确的
