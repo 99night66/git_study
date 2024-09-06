@@ -38,3 +38,20 @@
 - `git reset HEAD readme.txt` : 可以把暂存区的修改退回到工作区
 如果已经 commit 放到代码库中
 - `git reset --hard HEAD^`：回到上一个版本
+
+## 删除文件
+- `rm file1.txt` : 删除文件也是一个修改操作
+`rm file1.txt`之后，要从版本库中也删除 file1 文件 ：
+- `git rm file1.txt`
+- `git commit -m "删除 file1.txt 文件"`
+- 
+`rm file1.txt`之后，发现是误删，需要把文件恢复回来：
+- `git checkout -- file1.txt`
+
+如果`git rm file1.txt`删除了 file1 文件,需要恢复回来：
+- `git restore file1.txt`
+  
+如果已经`git commit -m "删除 file1.txt 文件"`提交了删除操作，,需要恢复回来：
+- `git checkout HEAD~1 -- file1.txt`: HEAD~1表示当前提交的前一个提交
+
+  
