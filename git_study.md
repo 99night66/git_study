@@ -28,3 +28,12 @@
 - 第一次修改 -> git add -> 第二次修改 -> git commit ：第一次的修改被提交，第二次的修改不会被提交
 - `git diff HEAD --readme.txt`：可以查看工作区和版本库里面最新版的区别
 - 第一次修改 -> git add -> 第二次修改 -> git add -> git commit ：这样才是正确的
+
+## 撤销更改 
+只能撤销修改的内容，如果已经 add 放到暂存区了，此时撤销就不会有变化
+撤销回到最近一次 git commit 或者 git add时的状态(也可以说是丢弃工作区的修改)
+- ``git checkout -- readme.txt` : 其中的`--`很重要，如果没有`--`，就会变成“创建一个新分支”的命令
+如果已经 add 放到暂存区了
+- `git reset HEAD readme.txt` : 可以把暂存区的修改退回到工作区
+如果已经 commit 放到代码库中
+- `git reset --hard HEAD^`：回到上一个版本
