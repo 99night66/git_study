@@ -17,6 +17,7 @@
 - 分别显示从最近到最远的提交日志
 `git log`
 - `git log --pretty=oneline` : 第一个参数是commit id（版本号）
+- 按 `q` 键 退出日志查看
 
 ## 版本回退
 - `git reset --hard HEAD^`：回到上一个版本
