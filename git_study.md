@@ -52,6 +52,15 @@
 - `git restore file1.txt`
   
 如果已经`git commit -m "删除 file1.txt 文件"`提交了删除操作，,需要恢复回来：
-- `git checkout HEAD~1 -- file1.txt`: HEAD~1表示当前提交的前一个提交
+- `git checkout HEAD~1 -- file1.txt`: HEAD~1表示当前提交的前一个提交（只能恢复文件到最新版本，你会丢失**最近一次提交后你修改的文件**）
 
+
+## 创建SSH Key
+`ssh-keygen -t rsa -C "youremail@example.com"`
+
+## 添加远程仓库
+`git remote add origin git@github.com:99night66/git_study.git`
+- 添加之后，远程仓库的名字就是origin ，这是git默认的叫法
   
+## 将本地库的内容推送到远程
+`git push -u origin master`：把当前分支master 推送到远程origin
