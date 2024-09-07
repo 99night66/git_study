@@ -87,4 +87,27 @@
 
 ## 分支管理策略
 通常，合并分支后，如果可能，git 会用 `fast forward` 模式，但这种模式下，删除分之后，会丢掉分支信息
+- `git merge --no-ff -m "使用--no-ff方式合并" dev` : git 在 merge 合并的时候会生成一个新的commit，这样从分支历史上就可以看出分支信息
 
+## bug分支
+有了bug之后，可以通过一个新的临时分支来修复，修复完成后，合并分支，然后将临时分支删除。
+
+dev分支进行一半，此时来了一个bug急需解决，此时可以使用`stash`功能（可以把当前工作现场储藏起来，等以后恢复现场后继续工作）:
+1. `git stash`：把当前工作现场存储起来
+2.假如需要在master上修复，那就从master分支上建立一个临时分支
+  -  `git checkout master`
+  -  `gitcheckout -b issue-101`
+3. 手动修改bug，然后提交
+   - `git add readme.txt`
+   - `git commit -m "fix bug 101"`
+4. 修复完成后。切换到master分支，并完成合并，最后删除issue-101分支
+   - `git checkout master`
+   - `git merge --no-ff -m "merged bug fix 101" issue-101`
+   - `git checkout -d issue-101`
+5. 修复完成后，回到dev分支继续工作
+  - `git checkout dev`
+  - `git stash list`：查看刚刚存储的工作现场
+6. 恢复工作现场，有两种方式：
+   1. `git stash pop`：恢复的同时也把stash的内容删除了
+   2. `git stash apply` & `git stash drop` : 先用apply恢复，然后再用drop删除
+**备注：可以多次stash，恢复的时候，先用 `git stash` 查看，然后恢复指定的stash：`git stash apply stash@{0}`**
