@@ -18,6 +18,7 @@
 `git log`
 - `git log --pretty=oneline` : 第一个参数是commit id（版本号）
 - 按 `q` 键 退出日志查看
+- `git log --graph --pretty=oneline --abbrev-commit`：以图形化的方式显示 Git 提交记录（--abbrev-commit：显示缩短的提交哈希值，而不是完整的哈希值）
 
 ## 版本回退
 - `git reset --hard HEAD^`：回到上一个版本
@@ -64,3 +65,26 @@
   
 ## 将本地库的内容推送到远程
 `git push -u origin master`：把当前分支master 推送到远程origin
+
+## 从远程克隆
+- `git clone git@github.com:99night66/git_study.git`
+
+## 创建与合并分支
+创建分支：
+- `git checkout -b dev`：`-b`参数表示创建并切换，相当于以下两条命令：
+  - `git branch dev`：创建分支
+  - `git checkout dev` ：切换分支
+- `git branch`：查看当前分支
+- `git merge dev`: 将 dev 分支合并到当前分支（合并分支之前要确保两个分支都已经提交更改）
+- `git branch -d dev`：删除 dev 分支
+
+## 解决冲突
+当两个已经提交更改的分支合并时，发现了`conflict`冲突时，进行如下几步：
+1. `git status` : 查找冲突的文件是哪些
+2. 查看冲突的文件
+3. 手动修改冲突文件的内容
+4. 重新 `add` & `commit` 提交
+
+## 分支管理策略
+通常，合并分支后，如果可能，git 会用 `fast forward` 模式，但这种模式下，删除分之后，会丢掉分支信息
+
