@@ -57,7 +57,7 @@
 
 
 ## 创建SSH Key
-`ssh-keygen -t rsa -C "youremail@example.com"`
+`ssh-keygen -t rsa -C "1546383065@qq.com"`
 
 ## 添加远程仓库
 `git remote add origin git@github.com:99night66/git_study.git`
@@ -112,3 +112,34 @@ dev分支进行一半，此时来了一个bug急需解决，此时可以使用`s
    2. `git stash apply` & `git stash drop` : 先用apply恢复，然后再用drop删除
 **备注：可以多次stash，恢复的时候，先用 `git stash` 查看，然后恢复指定的stash：`git stash apply stash@{0}`**
 
+## Feature 分支
+**每添加⼀个新功能，最好新建⼀个feature分⽀**，在上⾯开发，完成后，合并，最后，删除该feature分⽀
+- ` git checkout -b feature-vulcan`
+- 进行正常开发
+- `git add vulcan.py`
+- `git commit -m "add feature vulcan"`
+- `git checkout dev`
+- ⼀切顺利的话，feature分⽀和bug分⽀是类似的，合并，然后删除。
+  - `git merge feature-vulcan`
+  - `git branch -d feature-vulcan`
+- 不顺利的情况：就在此时，接到上级命令，因经费不⾜，新功能必须取消（这个分⽀必须就地销毁）**删除之前需要先切换分支**
+  - feature-vulcan分⽀还没有被合并，`git branch -d feature-vulcan`会删除失败
+  - 此时需要强行删除：`git branch -D feature-vulcan`
+
+## 推送分支
+- `git push origin master`：将本地 master 分支的提交推送到远程仓库 origin 的 master 分支（origin 是远程仓库的名称（通常是默认名称））
+- `git push origin master:dev`：本地 master 分支推送到远程 dev 分支
+- `git push origin dev`：将本地 dev 分支的更改推送到远程仓库 origin 的 dev 分支
+
+## 抓取分⽀
+- git clone git@github.com:99night66/git_study.git`：克隆代码 ` 
+- `cd git_study`：切换文件夹地址 
+- `git branch`：查看本地分支（默认情况下，只能看到本地的master分⽀）  
+- `git branch -r`：查看远程分支
+- `git checkout -b dev origin/dev`：创建远程origin的dev分⽀到本地(远程 dev 分支必须存在) 
+- 然后正常修改文件提交推送文件。。。假如此时，还有其他人也对同一个文件做了修改，导致git push报错
+- 解决方案：先⽤git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送
+  - `git branch --set-upstream-to=origin/dev dev`：在本地创建了一个名为 dev 的分支，但它并没有跟踪远程的 origin/dev 分支。可以使用 --set-upstream 来设置这个跟踪关系。设置了上游分支后，可以只用 git pull 或 git push，Git 会自动将更改推送到 origin/dev 或从 origin/dev 拉取更新，而无需每次都指定远程分支
+  - `git pull`
+  - 手动解决冲突：解决的⽅法和分⽀管理中的解决冲突完全⼀样
+  - 解决后，提交，再push
