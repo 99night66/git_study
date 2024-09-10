@@ -75,6 +75,7 @@
   - `git branch dev`：创建分支
   - `git checkout dev` ：切换分支
 - `git branch`：查看当前分支
+- `git branch -a`：列出所有本地和远程的分支
 - `git merge dev`: 将 dev 分支合并到当前分支（合并分支之前要确保两个分支都已经提交更改）
 - `git branch -d dev`：删除 dev 分支
 
@@ -126,16 +127,21 @@ dev分支进行一半，此时来了一个bug急需解决，此时可以使用`s
   - feature-vulcan分⽀还没有被合并，`git branch -d feature-vulcan`会删除失败
   - 此时需要强行删除：`git branch -D feature-vulcan`
 
+## 多人协作
+- `git remote`：查看远程库信息
+- `git remote -v`：查看更详细的信息
+
 ## 推送分支
 - `git push origin master`：将本地 master 分支的提交推送到远程仓库 origin 的 master 分支（origin 是远程仓库的名称（通常是默认名称））
 - `git push origin master:dev`：本地 master 分支推送到远程 dev 分支
 - `git push origin dev`：将本地 dev 分支的更改推送到远程仓库 origin 的 dev 分支
 
 ## 抓取分⽀
-- git clone git@github.com:99night66/git_study.git`：克隆代码 ` 
+- `git clone git@github.com:99night66/git_study.git`：克隆代码
 - `cd git_study`：切换文件夹地址 
 - `git branch`：查看本地分支（默认情况下，只能看到本地的master分⽀）  
 - `git branch -r`：查看远程分支
+- `git feach origin`：从远程仓库获取所有更新的分支和标签，但不会自动合并任何内容到本地分支
 - `git checkout -b dev origin/dev`：创建远程origin的dev分⽀到本地(远程 dev 分支必须存在) 
 - 然后正常修改文件提交推送文件。。。假如此时，还有其他人也对同一个文件做了修改，导致git push报错
 - 解决方案：先⽤git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送
