@@ -149,3 +149,16 @@ dev分支进行一半，此时来了一个bug急需解决，此时可以使用`s
   - `git pull`
   - 手动解决冲突：解决的⽅法和分⽀管理中的解决冲突完全⼀样
   - 解决后，提交，再push
+
+## 标签管理
+### 创建标签
+- 切换到需要打标签的分支上：`git checkout master`
+- 打标签：`git tag v1.0`    
+- 查看所有标签：`git tag`(标签不是按时间顺序列出，而是按字母排序的)
+- 默认标签是打在最新提交的`commit`上的（标签（tag）在提交（commit）之后创建，用于给特定的提交打上标记）
+- 如果忘记打标签：
+  - 先找到历史提交的commit id：`git log --pretty=oneline --abbrev-commit`
+  - 给特定commit打标签：`git tag 版本号 COMMITID`（例如：`git tag v0.9 4ccd355`）
+- 查看标签信息：`git show TAGNAME`(例如：`git show v0.9`)
+- 创建带有说明的标签（-a指定标签名，-m指定文字）：`git tag -a v0.1  -m "version 0.1 released" e17b470`
+- 通过-s用私钥签名一个标签：`git tag -s v0.2 -m "signed version 0.2 released" f611ef7`（**签名采用PGP签名，因此，必须先要安装gpg（GnuPG）**）
