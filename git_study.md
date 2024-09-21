@@ -1,3 +1,4 @@
+# 本地学习 git
 ## 初始化仓库
 - 把当前的目录变成Git可以管理的仓库
 `git init`
@@ -56,18 +57,23 @@
 - `git checkout HEAD~1 -- file1.txt`: HEAD~1表示当前提交的前一个提交（只能恢复文件到最新版本，你会丢失**最近一次提交后你修改的文件**）
 
 
+# 远程学习git
 ## 创建SSH Key
 `ssh-keygen -t rsa -C "1546383065@qq.com"`
 
-## 添加远程仓库
-`git remote add origin git@github.com:99night66/git_study.git`
-- 添加之后，远程仓库的名字就是origin ，这是git默认的叫法
-  
+## 添加远程仓库：
+`git remote add origin git@github.com:99night66/git_study.git`：添加之后，远程仓库的名字就是origin ，这是git默认的叫法
+
 ## 将本地库的内容推送到远程
 `git push -u origin master`：把当前分支master 推送到远程origin
 
 ## 从远程克隆
 - `git clone git@github.com:99night66/git_study.git`
+
+## 从远程拉取分支到本地（本地是空文件夹）
+1. 从远程克隆：`git clone git@github.com:99night66/git_study.git`
+2. 进入clone的目录：`cd git_study`
+3. 查看远程分支：`git branch -r`
 
 ## 创建与合并分支
 创建分支：
