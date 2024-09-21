@@ -162,3 +162,13 @@ dev分支进行一半，此时来了一个bug急需解决，此时可以使用`s
 - 查看标签信息：`git show TAGNAME`(例如：`git show v0.9`)
 - 创建带有说明的标签（-a指定标签名，-m指定文字）：`git tag -a v0.1  -m "version 0.1 released" e17b470`
 - 通过-s用私钥签名一个标签：`git tag -s v0.2 -m "signed version 0.2 released" f611ef7`（**签名采用PGP签名，因此，必须先要安装gpg（GnuPG）**）
+
+### 操作标签
+- 删除标签(没有推到远程时)：`git tag -d v0.1`
+- 推送标签到远程仓库：`git push origin v1.0`
+- 一次性推送全部尚未推动到远程的本地标签：`git push origin --tags`
+- 删除标签（标签已经被推送到远程时）:
+  1. 删除本地标签：`git tag -d v0.9`
+  2. 删除远程标签：`git push origin :refs/tags/v0.9`
+  3. 登录远程仓库查看标签是否被正常删除
+
