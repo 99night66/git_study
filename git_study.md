@@ -170,5 +170,19 @@ dev分支进行一半，此时来了一个bug急需解决，此时可以使用`s
 - 删除标签（标签已经被推送到远程时）:
   1. 删除本地标签：`git tag -d v0.9`
   2. 删除远程标签：`git push origin :refs/tags/v0.9`
-  3. 登录远程仓库查看标签是否被正常删除
+  3. 查看远程标签：`git ls-remote --tags origin`
 
+## 使用 GitHub
+### 参与开源项目（以 bootstrap 为例）
+1. 访问项目主页 `https://github.com/twbs/bootstrap`
+2. 点击`Fork`按钮（会自动在自己的账号下克隆一个 bootstrap 仓库）
+3. clone 自己账号下的 bootstrap 仓库 `git clone git@github.com:99night66/bootstrap.git`
+4. 修改代码，并推送到自己的仓库
+5. 希望bootstrap官方库接收你的修改,那你就可以在github上发起一个`pull request`
+
+### 自定义 git
+- 让 git 显示颜色 ：`git config --global color.ui true`
+
+### 忽略特殊文件
+1. 在 git 工作区根目录创建 .gitignore 文件
+2. 把要忽略的文件名填进去
