@@ -188,3 +188,11 @@ dev分支进行一半，此时来了一个bug急需解决，此时可以使用`s
 2. 把要忽略的文件名填进去(如果文件已被 Git 跟踪，即使在 .gitignore 中，它们仍会在 git status 中显示。只有未被跟踪的文件，才会遵循 .gitignore 的规则。)
 3. 停止跟踪文件：`git rm --cached <file>`
 4. 提交更改：`git commit -m "Stop tracking ignored files"`
+
+### 配置别名
+例如：
+- status用st代替：`git config --global alias.st status`,(--global 是全局参数，也就是这些命令在这台电脑的所有git仓库下都有用)
+- checkout用co代替：`git config --global alias.co checkout`
+- commit用ci代替：`git config --global alias.ci commit`
+- branch用br代替：`git config --global alias.br branch`
+- reset HEAD用unstge代替：`git config --global alias.unstage 'reset HEAD' `
