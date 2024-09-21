@@ -184,5 +184,7 @@ dev分支进行一半，此时来了一个bug急需解决，此时可以使用`s
 - 让 git 显示颜色 ：`git config --global color.ui true`
 
 ### 忽略特殊文件
-1. 在 git 工作区根目录创建 .gitignore 文件
-2. 把要忽略的文件名填进去
+1. 在 git 工作区根目录创建 .gitignore 文件,并提交
+2. 把要忽略的文件名填进去(如果文件已被 Git 跟踪，即使在 .gitignore 中，它们仍会在 git status 中显示。只有未被跟踪的文件，才会遵循 .gitignore 的规则。)
+3. 停止跟踪文件：`git rm --cached <file>`
+4. 提交更改：`git commit -m "Stop tracking ignored files"`
