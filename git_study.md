@@ -64,6 +64,10 @@
 ## 添加远程仓库：
 `git remote add origin git@github.com:99night66/git_study.git`：添加之后，远程仓库的名字就是origin ，这是git默认的叫法
 
+## 修改远程仓库名称
+- 如果远程仓库中 git_study 改成了 git_study111,那么在本地也需要修改远程仓库名称，然后才重新提交
+`git remote set-url origin git@github.com:99night66/git_study111.git`
+
 ## 将本地库的内容推送到远程
 `git push -u origin master`：把当前分支master 推送到远程origin
 
